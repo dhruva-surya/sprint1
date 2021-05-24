@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+     #outer{
+         width: 95%;
+         display: flex;
+
+     }
+     #form{
+         height: 900px;
+         width: 25%;
+         border: 1px solid black;
+         background-color: cornflowerblue;
+     }
+     #form div{
+        
+     margin: 2vh;
+
+    }
+    #form > button{
+        
+        margin-left: 20px;
+        padding: 1vh;
+        color: aqua;
+        font-weight: 600;
+   
+       }
+      input {
+          padding: 1%;
+          color: black;
+      }
+
+     #right{
+         width: 75%;
+         border: 1px solid black;
+         display: flex;
+         flex-wrap:wrap ;
+         background-color: cornflowerblue;
+
+     }
+     #right > div{
+         width: 20%;
+         border: 1px solid black;
+         height: 150px;
+         margin: 30px;
+     }
+     
+
+     #productList  button{
+         margin-top:20px ;
+         margin-left: 15px;
+         background-color: cadetblue;
+         
+     }
+     #productList > .namm{
+      color: black;
+      font-weight: 900;
+      font-size: 20px;
+      padding-left: 3px;
+      margin-top: -5px;
+     }
+     #productList > .pprice{
+      color: red;
+      font-weight: 900;
+      font-size: 18px;
+      padding-left: 3px;
+     }
+     #productList > .disc{
+      color: black;
+      font-weight: 600;
+      font-size: 16px;
+      padding-left: 3px;
+     }
+     #productList > .datt{
+      color: black;
+      font-weight: 900;
+      font-size: 18px;
+      padding-left: 3px;
+     }
+     .nik{
+         text-align: center;
+         font-size: 40px;
+     }
+
+
+
+        </style>
+    </head>
+    <body>
+        <div id="outer">
+            
+        <div id="form">
+            <form>
+                <div>
+                <input type="text" id="nam" value="Name"/>
+            </div>
+            <div>
+                <input type="text" id="price" value="Price" />
+            </div>
+            <div>
+                <input type="text" id="discrip" value="Discription"/>
+            </div>
+            <div>
+                <input type="text" id="date" value="Estimated Delivery"/>
+            </div>
+            <div>
+                <input type="url" id="imgs" placeholder="Image url"/>
+            </div>
+            </form>
+
+            <button onclick="addproduct()">Add Product</button>
+
+        </div>
+        <div id="right">
+
+        </div>
+        </div>
+
+    </body>
+    <script>
+          var id=1;
+          function addproduct(){
+             var name=document.getElementById("nam").value
+             var price=document.getElementById("price").value
+             var dis=document.getElementById("discrip").value
+             var date=document.getElementById("date").value
+             var imga=document.getElementById("imgs").value
+             var right=document.getElementById("right")
+             var div=document.createElement('div');
+               div.innerHTML=`<div id="productList">
+                              <img scr="${imga}"/>
+                              <div class="namm">${name}</div>
+                              <div id='pp${id}' class="pprice">${price}</div>
+                              <div class="disc">${dis}</div>
+                              <div class="datt">delivery- ${date}</div>
+                            <div><button id="${id}" onclick="remove(${id})">Remove</button><button id="${id}" onclick="update(${id})">Update</button>
+                
+                
+                
+                
+                
+                </div> `
+
+           id++;
+           right.appendChild(div)
+
+            }
+            
+            function remove(id){
+           var s=document.getElementById(id);
+           var p=s.parentElement;
+           var z=p.parentElement;
+           var f=z.parentElement
+           f.remove()
+       }
+       function update(id){
+        var new_price = prompt( ` Enter new price`)
+        var s=document.getElementById(`pp${id}`)
+         s.innerHTML=`${new_price}`
+
+       }
+
+
+    </script>
+</html>
